@@ -2,7 +2,7 @@ from cartas import cartas
 import math
 import random
 
-# Dar uma carta aleatoria
+# Give random card
 def giveLetter():
   cartaEscolhida = random.choice(cartas)
   cartas.remove(cartaEscolhida)
