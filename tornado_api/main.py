@@ -6,10 +6,15 @@ class MainHandler(tornado.web.RequestHandler):
     def get(self):
         self.write("Hello, world")
 
+class Caio(tornado.web.RequestHandler):
+    def get(self):
+        self.write("Batoré")
+
 
 def make_app():
     return tornado.web.Application([
         (r"/", MainHandler),
+        (r"/caio", Caio)
     ])
 
 if __name__ == "__main__":
