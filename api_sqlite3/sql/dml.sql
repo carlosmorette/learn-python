@@ -1,0 +1,1 @@
+INSERT INTO Pessoas("Carlos", "carlos.email@outlook.com", "senha123")
