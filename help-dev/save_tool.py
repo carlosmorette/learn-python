@@ -33,4 +33,5 @@ arquive = open("tools.json", "w")
 
 
 arquive.write(json.dumps(newArquiveDict))
+arquive.close()
 print("{0}Saved tool!{0}".format("\033[1;32m"))
