@@ -1,4 +1,4 @@
-#!/etc/python3
+#!/usr/bin/python3
 from math import pi
 import sys
 # import errno

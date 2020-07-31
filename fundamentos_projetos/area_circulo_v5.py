@@ -1,4 +1,4 @@
-#!/etc/python3
+#!/usr/bin/python3
 from math import pi
 
 raio = input("Informe o raio: ")

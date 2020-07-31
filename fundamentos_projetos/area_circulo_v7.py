@@ -1,4 +1,4 @@
-#!/etc/python3
+#!/usr/bin/python3
 from math import pi
 
 if __name__ == "__main__":
