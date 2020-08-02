@@ -1,37 +1,32 @@
 import json
 
+path = "tools.json"  # path to json
+
 print("==== Save Tools ====")
+with open(path) as tools_json:
+    arquive = json.load(tools_json)
 
-arquive = open("tools.json", "r")
+    def createNewTool():
+        nameTool = input("Tool name: ")
+        descriptionTool = input("Description tool: ")
 
-newArquiveDict = json.loads(arquive.read())
+        links = []
+        moreLink = "s"
 
+        while moreLink == "s":
+            link = input("Paste a useful link: ")
+            moreLink = input("More links [s/n]: ")
 
-def createNewTool():
-    nameTool = input("Tool name: ")
-    descriptionTool = input("Description tool: ")
+            links.append(link)
 
-    links = []
-    moreLink = "s"
+        return {
+            "nameTool": nameTool,
+            "descriptionTool": descriptionTool,
+            "links": links
+        }
 
-    while moreLink == "s":
-        link = input("Paste a useful link: ")
-        moreLink = input("More links [s/n]: ")
+    arquive.append(createNewTool())
 
-    links.append(link)
-
-    return {
-      "nameTool": nameTool,
-      "descriptionTool": descriptionTool,
-      "links": links
-    }
-
-
-newArquiveDict.append(createNewTool())
-
-arquive = open("tools.json", "w")
-
-
-arquive.write(json.dumps(newArquiveDict))
-arquive.close()
-print("{0}Saved tool!{0}".format("\033[1;32m"))
+    with open(path, "w") as newArquive:
+        newArquive.write(json.dumps(arquive))
+        print("{0}Saved tool!{0}".format("\033[1;32m"))
