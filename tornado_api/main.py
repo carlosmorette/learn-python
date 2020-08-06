@@ -1,24 +1,29 @@
 import tornado.ioloop
 import tornado.web
+import motor.motor_tornado
+import json
+import controllers.userController
+
+Controllers = {
+    "UserController": controllers.userController.UserController
+}
 
 
-class MainHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.write("Hello, world")
-
-class Caio(tornado.web.RequestHandler):
-    def get(self):
-        self.write("Batoré")
-
-
-def make_app():
+def make_app(database):
     return tornado.web.Application([
-        (r"/", MainHandler),
-        (r"/caio", Caio)
-    ])
+        (r"/", Controllers["UserController"])
+    ],
+        db=database["dev"]
+    )
 
 if __name__ == "__main__":
-    app = make_app()
-    app.listen(8888)
-    tornado.ioloop.IOLoop.current().start()
+
+    with open('config.json') as config_api:
+        string_conexao = json.load(config_api)
+
+        db = motor.motor_tornado.MotorClient(string_conexao["string_conexao"])
+
+        app = make_app(db)
+        app.listen(8888)
+        tornado.ioloop.IOLoop.current().start()
   
