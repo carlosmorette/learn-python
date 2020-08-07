@@ -1,0 +1,11 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "CreateTool",
+    "type": "object",
+    "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "useful_links": { "type": "array" }
+    },
+    "required": [ "name", "description", "useful_links" ]
+}
