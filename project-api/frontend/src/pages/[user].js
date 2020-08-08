@@ -1,34 +1,48 @@
 import Head from 'next/head'
-import { FormControl, Input, InputLabel, FormHelperText} from '@material-ui/core'
 
 export async function getStaticPaths() {
-  return {
-      paths: [],
-      fallback: true
-  }
+    return {
+        paths: [],
+        fallback: true
+    }
 }
 
 export async function getStaticProps(context) {
-  const { user } = context.params
-  return {
-    props: {
-      user
+    const { user } = context.params
+    return {
+        props: {
+            user
+        }
     }
-  }
+}
+
+async function getUserGitHub(name) {
+    const response = await fetch(`https://api.github.com/users/${name}`).then(resp => resp.json()).then(data => data)
+    return {
+        login: response.login,
+        avatar_url: response.avatar_url,
+        bio: response.bio,
+        company: response.company
+    }
 }
 
 export default function Home(props) {
-  return (
-    <div>
-      	<Head>
-        	<title>{String(props.user)}</title>
-      	</Head>
-      <h1>{props.user}</h1>
-      <FormControl>
-        <InputLabel htmlFor="my-input">Email address</InputLabel>
-        <Input id="my-input" aria-describedby="my-helper-text" />
-        <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
-      </FormControl>
-    </div>
-  )
+
+
+    const login = getUserGitHub(props.name)
+    console.log(login)
+
+    return (
+        <div>
+            <Head>
+                <title>{String(props.user)}</title>
+                <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet" />
+            </Head>
+            <h1 style={{ fontFamily: "Montserrat" }}>{props.user}</h1>
+            {
+                <div>
+                </div>
+            }
+        </div>
+    )
 }
