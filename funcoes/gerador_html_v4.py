@@ -1,4 +1,4 @@
-#!#!/usr/bin/python3
+#!/usr/bin/python3
 def tag_bloco(conteudo, *args, classe="success", inline=False):
     tag = 'span' if inline else "div"
     html = conteudo if not callable(conteudo) else conteudo(*args)

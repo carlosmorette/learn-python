@@ -1,4 +1,4 @@
-#!#!/usr/bin/python3
+#!/usr/bin/python3
 bloco_atrs = ('bloco_accesskey', 'bloco_id')
 ul_atrs = ('ul_id', 'ul_style')
 
