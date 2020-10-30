@@ -16,10 +16,16 @@ class User(tornado.web.RequestHandler):
             print(json.load(users))
 
     def post(self):
-        # body = tornado.escape.json_decode(self.request.body)
-        self.write({
-            "name": "asdsadad"
-        })
+        body = tornado.escape.json_decode(self.request.body)
+
+        print(json.load(body))
+
+        # try:
+        #     with open("users.txt", "w") as users_arquive:
+        #         users_arquive.write(json.dumps(body))
+        #     self.write(json.dumps({"ok"}))
+        # except:
+        #     self.write(json.dumps({"error": "Deu ruim"}))
 
 def make_app():
     return tornado.web.Application([
